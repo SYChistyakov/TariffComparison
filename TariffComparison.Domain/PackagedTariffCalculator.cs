@@ -22,7 +22,7 @@
             else
             {
                 int additionalConsumption = consumption - _includedKwh;
-                return _baseCost + additionalConsumption * _costPerAdditionalKwh / 100.0d;
+                return Math.Round(_baseCost + additionalConsumption * _costPerAdditionalKwh / 100.0d, 2);
             }
         }
     }

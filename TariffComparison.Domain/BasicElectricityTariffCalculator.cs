@@ -14,7 +14,7 @@
 
         protected override double CalculateAnnualCostsInternal(int consumption)
         {
-            return _baseCostPerMonth * 12 + (_costPerKwh * consumption / 100.0d);
+            return Math.Round(_baseCostPerMonth * 12 + (_costPerKwh * consumption / 100.0d), 2);
         }
     }
 }
