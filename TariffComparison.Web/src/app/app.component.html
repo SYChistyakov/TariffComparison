@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 id="tableLabel">Tariff Comparison</h1>
+
+  <div *ngIf="errorMessage" class="alert">
+    <span class="closebtn" (click)="errorMessage=''">&times;</span>
+    {{ errorMessage }}
+  </div>
+
+  <div class="content">
+    <form (ngSubmit)="getTariffs()">
+      <div>
+        <label>Consumption (kWh/year)</label>
+        <input type="number" [(ngModel)]="consumption" name="consumption" min="0" required />
+      </div>
+      <button type="submit">Get Tariffs</button>
+    </form>
+
+    <div *ngIf="tariffs">
+      <h2>Tariffs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tariff Name</th>
+            <th>Annual Costs (€/year)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tariff of tariffs">
+            <td>{{ tariff.tariffName }}</td>
+            <td>{{ tariff.annualCosts }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

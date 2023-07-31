@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  tariff-comparison-web:
+    image: tariff-comparison-web
+    build:
+      context: ./TariffComparison.Web
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://localhost:5000/api
+    ports:
+      - 8080:80
+
+  tariff-comparison-api:
+    image: tariff-comparison-api
+    build:
+      dockerfile: ./TariffComparison.API/Dockerfile
+    environment:
+      - WEB_APP_ORIGIN=http://localhost:8080
+    ports:
+      - 5000:80
